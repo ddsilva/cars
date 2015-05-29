@@ -2,7 +2,7 @@
 
 var express = require('express'),
     bodyParser = require('body-parser'),
-    routes = require('./routes'),
+    carController = require('./controllers/car'),
     app = express();
 
 app.listen(3000);
@@ -16,5 +16,5 @@ app.use(bodyParser.json());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Api routes
-app.use('/api', routes);
+// Controllers
+app.use('/api', carController);
