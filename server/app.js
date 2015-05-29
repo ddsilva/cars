@@ -1,16 +1,20 @@
-var express = require('express');
-var app = express();
-var server;
+#!/usr/bin/env node
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+var express = require('express'),
+    bodyParser = require('body-parser'),
+    routes = require('./routes'),
+    app = express();
 
-server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
+app.listen(3000);
 
-  console.log('App listening at http://%s:%s', host, port);
-});
+// Static files
+app.use(express.static('public'));
 
-module.exports = app;
+// Parse application/json
+app.use(bodyParser.json());
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Api routes
+app.use('/api', routes);
