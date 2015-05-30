@@ -1,11 +1,11 @@
 var _ = require('lodash'),
     CrudService = require('./crud_service'),
-    manufactorService = require('./manufactor_service'),
+    brandService = require('./brand_service'),
     dataInterface,
     carService;
 
 dataInterface = {
-  manufactor: null,
+  brand: null,
   name: null,
   year: null
 };
@@ -23,8 +23,8 @@ carService.create = function(data) {
     id: this.lastIndex++
   }, data);
 
-  if (item.manufactor) {
-    item.manufactor = manufactorService.getById(item.manufactor);
+  if (item.brand) {
+    item.brand = brandService.getById(item.brand);
   }
 
   this.items.push(item);
@@ -43,8 +43,8 @@ carService.update = function(id, data) {
     item.id = parseInt(id);
   }
 
-  if (item.manufactor) {
-    item.manufactor = manufactorService.getById(item.manufactor);
+  if (data.brand) {
+    item.brand = brandService.getById(item.brand);
   }
 
   return item;
