@@ -2,7 +2,8 @@
 
 var express = require('express'),
     bodyParser = require('body-parser'),
-    carController = require('./controllers/car'),
+    carRouter = require('./routers/car_router'),
+    brandRouter = require('./routers/brand_router'),
     app = express();
 
 app.listen(3000);
@@ -16,5 +17,9 @@ app.use(bodyParser.json());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Controllers
-app.use('/api', carController);
+// Routers
+app.use('/api', carRouter);
+app.use('/api', brandRouter);
+
+// Mock data
+require('./mock_data');
