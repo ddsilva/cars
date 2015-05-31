@@ -23,7 +23,11 @@
       }
 
       return promise;
-    }
+    };
+
+    this.remove = function(car) {
+      return $http.delete('/api/car/' + car.id);
+    };
   };
 
 
