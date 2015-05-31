@@ -1,24 +1,27 @@
-<div>
+<div ng-show="vm.cars.length">
   <input type="text" class="col-md-12" ng-model="vm.filter" placeholder="Filtro">
 </div>
 
 <table class="table table-hover" ng-show="vm.cars.length">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>Ano</th>
-      <th>Montadora</th>
-      <th></th>
+      <th class="text-center">ID</th>
+      <th class="text-center">Nome</th>
+      <th class="text-center">Ano</th>
+      <th class="text-center">Montadora</th>
+      <th class="text-center">Açoes</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="car in vm.cars | filter:vm.filter ">
-      <th><a href="#/car/{{car.id}}">{{car.id}}</a></th>
-      <th>{{car.name}}</th>
-      <th>{{car.year}}</th>
-      <th>{{car.brand | idListFilter:vm.brands}}</th>
-      <th><a class="btn btn-danger" ng-click="vm.removeCar(car)">x</a></th>
+      <th class="text-center">{{car.id}}</th>
+      <th class="text-center">{{car.name}}</th>
+      <th class="text-center">{{car.year}}</th>
+      <th class="text-center">{{car.brand | idListFilter:vm.brands}}</th>
+      <th class="text-center">
+        <a href="#car/{{car.id}}"class="btn btn-info"><i class="glyphicon glyphicon-pencil"></i></a>
+        <a class="btn btn-danger" ng-click="vm.removeCar(car)"><i class="glyphicon glyphicon-remove"></i></a>
+      </th>
     </tr>
   </tbody>
 </table>
