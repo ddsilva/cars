@@ -39,6 +39,8 @@ var _ = require('lodash'),
 
       data = data || {};
 
+      delete data.id;
+
       if (item) {
         _.extend(item, data);
         item.id = parseInt(id);
