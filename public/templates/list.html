@@ -1,0 +1,30 @@
+<div>
+  <input type="text" class="col-md-12" ng-model="vm.filter" placeholder="Filtro">
+</div>
+
+<table class="table table-hover" ng-show="vm.cars.length">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Ano</th>
+      <th>Montadora</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="car in vm.cars | filter:vm.filter ">
+      <th><a href="#/car/{{car.id}}">{{car.id}}</a></th>
+      <th>{{car.name}}</th>
+      <th>{{car.year}}</th>
+      <th>{{car.brand | idListFilter:vm.brands}}</th>
+    </tr>
+  </tbody>
+</table>
+
+<div class="alert alert-warning" ng-show="!vm.cars.length">
+  Sem registros
+</div>
+
+<div>
+  <a href="#/car" class="btn btn-primary">Cadastrar carro</a>
+</div>
